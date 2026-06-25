@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct Node{
+// singly linked list
+/*typedef struct Node{
 	int data;
 	struct Node* next;
 }Node;
@@ -41,6 +42,52 @@ int main(){
 	free(node2);
 	free(node3);
 	free(node4);
+
+	return 0;
+}
+*/
+
+//Doubly Linked List
+typedef struct Node{
+	int data;
+	struct Node* next;
+	struct Node* prev;
+}Node;
+
+Node* createNode(int data){
+	Node* newNode = (Node*)malloc(sizeof(Node));
+	if (!newNode) {
+		printf("Memory Allocation Failed!");
+		exit(1);
+	}
+	newNode -> data = data;
+	newNode -> next = NULL;
+	newNode -> prev = NULL;
+
+	return newNode;
+}
+
+void traversal_forward(Node* node){
+	while (node){
+		printf("%d -> ",node->data);
+		node = node -> next;
+	}
+	printf("NULL\n");
+}
+void traversal_rev(Node* node){
+	while (node){
+		printf("%d -> ", node->data);
+		node = node-> prev;
+	}
+	printf("NULL \n");
+}
+
+int main(){
+	Node* node1 = createNode(1);
+	Node* node2 = createNode(2);
+	Node* node3 = createNode(3);
+	Node* node4 = createNode(4);
+
 
 	return 0;
 }
