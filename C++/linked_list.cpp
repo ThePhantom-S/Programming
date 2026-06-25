@@ -88,6 +88,15 @@ int main(){
 	Node* node3 = createNode(3);
 	Node* node4 = createNode(4);
 
+	node1->next = node2;
+	node2->prev = node1;
+	node2->next = node3;
+	node3->prev = node2;
+	node3->next = node4;
+	node4->prev = node3;
+
+	traversal_forward(node1);
+	traversal_rev(node4);
 
 	return 0;
 }
